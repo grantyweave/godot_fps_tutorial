@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b60fp7146wi6u"]
+
+[ext_resource type="PackedScene" uid="uid://bp6m7xr3ml4db" path="res://scenes/environments/world_environment.tscn" id="1_kvexg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kvexg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8jvw5"]
+
+[node name="PrototypeLevel" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_kvexg")]
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="floor" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(43.677387, 0, 0, 0, 0.037287675, 0, 0, 0, 57.866978, 0, 0, 0)
+
+[node name="crouch_check" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(4.3965187, 0, 0, 0, 0.12220514, 0, 0, 0, 10.867263, 13.199632, 3.6941657, -12.506363)
+size = Vector3(1, 25.55066, 1)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2252157, 0)
+mesh = SubResource("CapsuleMesh_kvexg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_8jvw5")
